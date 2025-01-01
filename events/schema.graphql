@@ -1231,9 +1231,6 @@ type QuoteSettlementData @entity {
 	accountSource: Bytes!
     currentPrice: BigInt!
     partyBUpnlIndex: Int!
-    transactionLogIndex: BigInt!
-    logIndex: BigInt!
-    blockHash: Bytes!
 }
 
 type SettleUpnl @entity(immutable: true) {

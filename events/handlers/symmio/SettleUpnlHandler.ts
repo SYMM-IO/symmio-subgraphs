@@ -2,6 +2,7 @@ import { QuoteSettlementData, SettleUpnl as SettleUpnlEntity } from "../../../ge
 import { ethereum } from "@graphprotocol/graph-ts"
 import { Version } from "../../../common/BaseHandler"
 import { getGlobalCounterAndInc } from "../../../common/utils"
+import { findAccountSourceForQuote } from "../../utils/account_utils";
 
 export class SettleUpnlHandler<T> {
 	handle(_event: ethereum.Event, version: Version): void {
@@ -29,7 +30,8 @@ export class SettleUpnlHandler<T> {
 			quoteData.quoteId = data.quoteId
 			quoteData.currentPrice = data.currentPrice
 			quoteData.partyBUpnlIndex = data.partyBUpnlIndex
-
+			quoteData.accountSource = findAccountSourceForQuote(data.quoteId)
+			
 			// Save the individual quote data
 			quoteData.save()
 
