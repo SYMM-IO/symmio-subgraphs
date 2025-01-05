@@ -15,7 +15,7 @@ export class LiquidatePositionsPartyAHandler<T> {
 		entity.liquidator = event.params.liquidator
 		entity.partyA = event.params.partyA
 		entity.quoteIds = event.params.quoteIds
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 

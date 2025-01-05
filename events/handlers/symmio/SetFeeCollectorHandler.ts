@@ -14,7 +14,7 @@ export class SetFeeCollectorHandler<T> {
 		entity.counterId = getGlobalCounterAndInc()
 		entity.oldFeeCollector = event.params.oldFeeCollector
 		entity.newFeeCollector = event.params.newFeeCollector
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 

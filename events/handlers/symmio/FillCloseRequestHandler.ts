@@ -20,7 +20,7 @@ export class FillCloseRequestHandler<T> {
 		entity.filledAmount = event.params.filledAmount
 		entity.closedPrice = event.params.closedPrice
 		entity.quoteStatus = event.params.quoteStatus
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 
