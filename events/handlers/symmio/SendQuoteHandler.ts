@@ -18,7 +18,7 @@ export class SendQuoteHandler<T> {
 		entity.partyA = event.params.partyA
 		entity.quoteId = event.params.quoteId
 		entity.accountSource = findAccountSourceForQuoteForAccount(event.params.partyA)
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 		if (event.params.partyBsWhiteList) {

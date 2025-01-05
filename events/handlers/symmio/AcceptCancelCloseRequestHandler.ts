@@ -16,7 +16,7 @@ export class AcceptCancelCloseRequestHandler<T> {
 		entity.quoteId = event.params.quoteId
 		entity.accountSource = findAccountSourceForQuote(event.params.quoteId)
 		entity.quoteStatus = event.params.quoteStatus
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 

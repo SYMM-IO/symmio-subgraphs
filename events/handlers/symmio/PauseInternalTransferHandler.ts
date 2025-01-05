@@ -10,7 +10,7 @@ export class PauseInternalTransferHandler<T> {
 		let entity = new PauseInternalTransferEntity(event.transaction.hash.toHex() + "-" + event.logIndex.toString())
 
 		entity.counterId = getGlobalCounterAndInc()
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 		entity.blockTimestamp = event.block.timestamp

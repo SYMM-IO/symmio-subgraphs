@@ -16,7 +16,7 @@ export class SetSymbolsPricesHandler<T> {
 		entity.partyA = event.params.partyA
 		entity.symbolIds = event.params.symbolIds
 		entity.prices = event.params.prices
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 

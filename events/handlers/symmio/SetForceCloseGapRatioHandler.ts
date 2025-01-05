@@ -14,7 +14,7 @@ export class SetForceCloseGapRatioHandler<T> {
 		entity.counterId = getGlobalCounterAndInc()
 		entity.oldForceCloseGapRatio = event.params.oldForceCloseGapRatio
 		entity.newForceCloseGapRatio = event.params.newForceCloseGapRatio
-		entity.transactionLogIndex = event.transaction.index
+		entity.transactionIndex = event.transaction.index
 		entity.logIndex = event.logIndex
 		entity.blockHash = event.block.hash
 
