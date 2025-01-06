@@ -27,7 +27,7 @@ RUN apt-get update && \
     node -v >> debug.txt &&\
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN npm install -g @graphprotocol/graph-cli
+RUN npm install -g @graphprotocol/graph-cli@0.79.2
 
 RUN mkdir /subgraph
 COPY package.json /subgraph
