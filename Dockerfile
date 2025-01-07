@@ -2,6 +2,7 @@
 # Description: -
 ARG PY_VER=3.11
 FROM python:${PY_VER} AS subgraph-py
+
 ######################################################################
 # LABELS
 ######################################################################
@@ -22,11 +23,12 @@ LABEL org.build.Date=${BUILD_DATE}
 ######################################################################
 RUN apt-get update && \
     apt-get install --no-install-recommends -y tini jq && \
-    curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
-    apt-get install -y nodejs && \
-    node -v >> debug.txt &&\
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs=18.17.1-1nodesource1 && \
+    node -v >> debug.txt && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 RUN npm install -g @graphprotocol/graph-cli@0.79.2
 
 RUN mkdir /subgraph
