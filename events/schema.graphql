@@ -1426,6 +1426,7 @@ type WithdrawReceivedBridgeValues @entity(immutable: true) {
 
 type AddAccount @entity {
 	id: ID!
+    counterId: BigInt!
 	account: Bytes!
 	user: Bytes!
 	accountSource: Bytes!
