@@ -1,0 +1,3 @@
+type Affiliate @entity {
+	id: ID!
+}

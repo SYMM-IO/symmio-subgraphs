@@ -3,6 +3,7 @@ import {
 } from "../../../common/handlers/symmio/EmergencyClosePositionHandler"
 import {ethereum} from "@graphprotocol/graph-ts";
 import {Version} from "../../../common/BaseHandler";
+import {EmergencyClosePosition as EmergencyClosePosition_0_8_4} from "../../../generated/symmio_0_8_4/symmio_0_8_4";
 import {EmergencyClosePosition as EmergencyClosePosition_0_8_3} from "../../../generated/symmio_0_8_3/symmio_0_8_3";
 import {EmergencyClosePosition as EmergencyClosePosition_0_8_2} from "../../../generated/symmio_0_8_2/symmio_0_8_2";
 import {EmergencyClosePosition as EmergencyClosePosition_0_8_0} from "../../../generated/symmio_0_8_0/symmio_0_8_0";
@@ -17,6 +18,10 @@ export class EmergencyClosePositionHandler<T> extends CommonEmergencyClosePositi
 		super.handleSymbol(_event, version)
 		super.handleAccount(_event, version)
 		switch (version) {
+			case Version.v_0_8_4: {
+				handleClose<EmergencyClosePosition_0_8_4>(event, "EmergencyClosePosition", version)
+				break
+			}
 			case Version.v_0_8_3: {
 				handleClose<EmergencyClosePosition_0_8_3>(event, "EmergencyClosePosition", version)
 				break

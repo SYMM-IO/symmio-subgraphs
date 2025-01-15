@@ -1,4 +1,4 @@
-import {BigInt} from "@graphprotocol/graph-ts";
+import { BigInt } from "@graphprotocol/graph-ts"
 
 export function startOfDay(timestamp: BigInt): Date {
 	let date = new Date(timestamp.toI64() * 1000)
@@ -41,4 +41,23 @@ export function isSameWeek(timestamp1: BigInt, timestamp2: BigInt): boolean {
 
 export function isSameMonth(timestamp1: BigInt, timestamp2: BigInt): boolean {
 	return startOfMonth(timestamp1).getTime().toString() == startOfMonth(timestamp2).getTime().toString()
+}
+
+export const SECONDS_IN_DAY = BigInt.fromI32(86400)
+
+export function startOfDayTimestamp(timestamp: BigInt): BigInt {
+	return timestamp.div(SECONDS_IN_DAY).times(SECONDS_IN_DAY)
+}
+
+export function endOfDayTimestamp(timestamp: BigInt): BigInt {
+	let dayStart = startOfDayTimestamp(timestamp)
+	return dayStart.plus(SECONDS_IN_DAY).minus(BigInt.fromI32(1))
+}
+
+export function getDayNumber(timestamp: BigInt): BigInt {
+	return timestamp.div(SECONDS_IN_DAY)
+}
+
+export function diffInSeconds(end: BigInt, start: BigInt): BigInt {
+	return end.minus(start)
 }

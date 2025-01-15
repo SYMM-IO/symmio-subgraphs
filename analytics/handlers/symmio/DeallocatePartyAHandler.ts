@@ -1,13 +1,12 @@
-import {
-	DeallocatePartyAHandler as CommonDeallocatePartyAHandler
-} from "../../../common/handlers/symmio/DeallocatePartyAWithAccountHandler"
-import {Account, BalanceChange} from "../../../generated/schema"
-import {ethereum} from "@graphprotocol/graph-ts";
-import {Version} from "../../../common/BaseHandler";
-import {getConfiguration} from "../../utils/builders";
+import { DeallocatePartyAHandler as CommonDeallocatePartyAHandler } from "../../../common/handlers/symmio/DeallocatePartyAWithAccountHandler"
+import { Account, BalanceChange } from "../../../generated/schema"
+import { ethereum } from "@graphprotocol/graph-ts"
+import { Version } from "../../../common/BaseHandler"
+import { getConfiguration } from "../../utils/builders"
 
-import {updateActivityTimestamps, updateHistories, UpdateHistoriesParams} from "../../utils/helpers";
-import {BalanceChangeType, balanceChangeTypes} from "../../utils/constants";
+import { updateHistories, UpdateHistoriesParams } from "../../utils/historyHelpers"
+import { BalanceChangeType, balanceChangeTypes } from "../../utils/constants"
+import { updateActivityTimestamps } from "../../utils/activityHelpers"
 
 export class DeallocatePartyAHandler<T> extends CommonDeallocatePartyAHandler<T> {
 	handle(_event: ethereum.Event, version: Version): void {
@@ -19,13 +18,10 @@ export class DeallocatePartyAHandler<T> extends CommonDeallocatePartyAHandler<T>
 		super.handleAccount(_event, version)
 
 		let account = Account.load(event.params.user.toHexString())
-		if (account == null)
-			return
+		if (account == null) return
 		updateActivityTimestamps(account, event.block.timestamp)
 		if (version < Version.v_0_8_3) {
-			let deallocate = new BalanceChange(
-				event.transaction.hash.toHex() + "-" + event.logIndex.toHexString(),
-			)
+			let deallocate = new BalanceChange(event.transaction.hash.toHex() + "-" + event.logIndex.toHexString())
 			deallocate.type = balanceChangeTypes.get(BalanceChangeType.DEALLOCATE)
 			deallocate.timestamp = event.block.timestamp
 			deallocate.blockNumber = event.block.number
@@ -36,9 +32,6 @@ export class DeallocatePartyAHandler<T> extends CommonDeallocatePartyAHandler<T>
 			deallocate.save()
 		}
 
-		updateHistories(
-			new UpdateHistoriesParams(version, account, null, event)
-				.deallocate(event.params.amount)
-		)
+		updateHistories(new UpdateHistoriesParams(version, account, null, event).deallocate(event.params.amount))
 	}
 }

@@ -1,5 +1,5 @@
 import { BigInt, Bytes, ethereum } from "@graphprotocol/graph-ts"
-import { Account as AccountModel, User as UserModel } from "../../generated/schema"
+import { Account as AccountModel, User as UserModel, Players } from "../../generated/schema"
 import { getGlobalCounterAndInc } from "../utils"
 
 export enum AccountType {
@@ -64,4 +64,19 @@ export function createNewAccountIfNotExists(
 	account.blockNumber = block.number
 	account.save()
 	return account
+}
+
+export function getPlayers(): Players {
+	const id = "SymmioPlayers"
+	let players = Players.load(id)
+	if (!players) {
+		players = new Players(id)
+		let affiliates: Bytes[] = []
+		affiliates.push(Bytes.fromHexString("0x0000000000000000000000000000000000000000"))
+		players.affiliates = affiliates
+		players.solvers = []
+		players.liquidators = []
+		players.save()
+	}
+	return players
 }

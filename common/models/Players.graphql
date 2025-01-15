@@ -1,0 +1,6 @@
+type Players @entity {
+	id: ID!
+	solvers: [Bytes!]!
+	liquidators: [Bytes!]!
+	affiliates: [Bytes!]!
+}

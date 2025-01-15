@@ -1,213 +1,218 @@
 type UserActivity @entity {
-    id: ID!
-    user: Bytes!
-    accountSource: Bytes
-    timestamp: BigInt!
-    updateTimestamp: BigInt
+	id: ID!
+	user: Bytes!
+	accountSource: Bytes
+	timestamp: BigInt!
+	updateTimestamp: BigInt
 }
 
 type BalanceChange @entity {
-    id: ID!
-    type: String!
-    account: Bytes!
-    sideAccount: Bytes
-    amount: BigInt!
-    collateral: Bytes!
-    timestamp: BigInt!
-    blockNumber: BigInt!
-    transaction: Bytes!
+	id: ID!
+	type: String!
+	account: Bytes!
+	sideAccount: Bytes
+	amount: BigInt!
+	collateral: Bytes!
+	timestamp: BigInt!
+	blockNumber: BigInt!
+	transaction: Bytes!
 }
 
 type TradeHistory @entity {
-    id: ID!
-    account: Bytes!
-    volume: BigInt!
-    timestamp: BigInt!
-    updateTimestamp: BigInt!
-    blockNumber: BigInt!
-    transaction: Bytes!
-    quoteStatus: Int!
-    quote: BigInt!
+	id: ID!
+	account: Bytes!
+	volume: BigInt!
+	timestamp: BigInt!
+	updateTimestamp: BigInt!
+	blockNumber: BigInt!
+	transaction: Bytes!
+	quoteStatus: Int!
+	quote: BigInt!
 }
 
 type DailyHistory @entity {
-    id: ID!
-    quotesCount: BigInt!
-    tradeVolume: BigInt!
-    openTradeVolume: BigInt!
-    closeTradeVolume: BigInt!
-    liquidateTradeVolume: BigInt!
-    deposit: BigInt!
-    withdraw: BigInt!
-    allocate: BigInt!
-    deallocate: BigInt!
-    activeUsers: BigInt!
-    newUsers: BigInt!
-    newAccounts: BigInt!
-    platformFee: BigInt!
-    openInterest: BigInt!
-    fundingPaid: BigInt!
-    fundingReceived: BigInt!
-    averagePositionSize: BigInt!
-    positionsCount: BigInt!
-    accountSource: Bytes
-    updateTimestamp: BigInt!
-    timestamp: BigInt!
+	id: ID!
+	quotesCount: BigInt!
+	tradeVolume: BigInt!
+	openTradeVolume: BigInt!
+	closeTradeVolume: BigInt!
+	liquidateTradeVolume: BigInt!
+	deposit: BigInt!
+	withdraw: BigInt!
+	allocate: BigInt!
+	deallocate: BigInt!
+	activeUsers: BigInt!
+	newUsers: BigInt!
+	newAccounts: BigInt!
+	platformFee: BigInt!
+	openInterest: BigInt!
+	fundingPaid: BigInt!
+	fundingReceived: BigInt!
+	averagePositionSize: BigInt!
+	positionsCount: BigInt!
+	accountSource: Bytes
+	updateTimestamp: BigInt!
+	timestamp: BigInt!
 }
 
-type SolverDailyHistory @entity{
-    id: ID!
-    tradeVolume: BigInt!
-    openTradeVolume: BigInt!
-    closeTradeVolume: BigInt!
-    liquidateTradeVolume: BigInt!
-    openInterest: BigInt!
-    averagePositionSize: BigInt!
-    positionsCount: BigInt!
-    fundingPaid: BigInt!
-    fundingReceived: BigInt!
-    solver: Bytes!
-    accountSource: Bytes
-    updateTimestamp: BigInt!
-    timestamp: BigInt!
+type SolverDailyHistory @entity {
+	id: ID!
+	tradeVolume: BigInt!
+	openTradeVolume: BigInt!
+	closeTradeVolume: BigInt!
+	liquidateTradeVolume: BigInt!
+	openInterest: BigInt!
+	averagePositionSize: BigInt!
+	positionsCount: BigInt!
+	fundingPaid: BigInt!
+	fundingReceived: BigInt!
+	solver: Bytes!
+	accountSource: Bytes
+	updateTimestamp: BigInt!
+	timestamp: BigInt!
 }
 
 type WeeklyHistory @entity {
-    id: ID!
-    tradeVolume: BigInt!
-    activeUsers: BigInt!
-    accountSource: Bytes
-    timestamp: BigInt!
+	id: ID!
+	tradeVolume: BigInt!
+	activeUsers: BigInt!
+	accountSource: Bytes
+	timestamp: BigInt!
 }
 
 type MonthlyHistory @entity {
-    id: ID!
-    tradeVolume: BigInt!
-    activeUsers: BigInt!
-    accountSource: Bytes
-    timestamp: BigInt!
+	id: ID!
+	tradeVolume: BigInt!
+	activeUsers: BigInt!
+	accountSource: Bytes
+	timestamp: BigInt!
 }
 
 type TotalHistory @entity {
-    id: ID!
-    quotesCount: BigInt!
-    tradeVolume: BigInt!
-    openTradeVolume: BigInt!
-    closeTradeVolume: BigInt!
-    liquidateTradeVolume: BigInt!
-    deposit: BigInt!
-    withdraw: BigInt!
-    allocate: BigInt!
-    deallocate: BigInt!
-    users: BigInt!
-    accounts: BigInt!
-    platformFee: BigInt!
-    fundingPaid: BigInt!
-    fundingReceived: BigInt!
-    accountSource: Bytes
-    collateral: Bytes!
-    updateTimestamp: BigInt!
-    timestamp: BigInt!
+	id: ID!
+	quotesCount: BigInt!
+	tradeVolume: BigInt!
+	openTradeVolume: BigInt!
+	closeTradeVolume: BigInt!
+	liquidateTradeVolume: BigInt!
+	deposit: BigInt!
+	withdraw: BigInt!
+	allocate: BigInt!
+	deallocate: BigInt!
+	users: BigInt!
+	accounts: BigInt!
+	platformFee: BigInt!
+	fundingPaid: BigInt!
+	fundingReceived: BigInt!
+	accountSource: Bytes
+	collateral: Bytes!
+	updateTimestamp: BigInt!
+	timestamp: BigInt!
 }
 
-
 type DailyUserHistory @entity {
-    id: ID!
-    account: Bytes!
-    quotesCount: BigInt!
-    openTradeVolume: BigInt!
-    closeTradeVolume: BigInt!
-    liquidateTradeVolume: BigInt!
-    deposit: BigInt!
-    withdraw: BigInt!
-    allocate: BigInt!
-    deallocate: BigInt!
-    accAllocate: BigInt!
-    accDeallocate: BigInt!
-    platformFeePaid: BigInt!
-    fundingPaid: BigInt!
-    fundingReceived: BigInt!
-    loss: BigInt!
-    profit: BigInt!
-    accountSource: Bytes
-    updateTimestamp: BigInt!
-    timestamp: BigInt!
+	id: ID!
+	account: Bytes!
+	quotesCount: BigInt!
+	openTradeVolume: BigInt!
+	closeTradeVolume: BigInt!
+	liquidateTradeVolume: BigInt!
+	deposit: BigInt!
+	withdraw: BigInt!
+	allocate: BigInt!
+	deallocate: BigInt!
+	accAllocate: BigInt!
+	accDeallocate: BigInt!
+	platformFeePaid: BigInt!
+	fundingPaid: BigInt!
+	fundingReceived: BigInt!
+	loss: BigInt!
+	profit: BigInt!
+	accountSource: Bytes
+	updateTimestamp: BigInt!
+	timestamp: BigInt!
 }
 
 type TotalUserHistory @entity {
-    id: ID!
-    account: Bytes!
-    quotesCount: BigInt!
-    openTradeVolume: BigInt!
-    closeTradeVolume: BigInt!
-    liquidateTradeVolume: BigInt!
-    deposit: BigInt!
-    withdraw: BigInt!
-    allocate: BigInt!
-    deallocate: BigInt!
-    platformFeePaid: BigInt!
-    fundingPaid: BigInt!
-    fundingReceived: BigInt!
-    loss: BigInt!
-    profit: BigInt!
-    accountSource: Bytes
-    updateTimestamp: BigInt!
-    timestamp: BigInt!
+	id: ID!
+	account: Bytes!
+	quotesCount: BigInt!
+	openTradeVolume: BigInt!
+	closeTradeVolume: BigInt!
+	liquidateTradeVolume: BigInt!
+	deposit: BigInt!
+	withdraw: BigInt!
+	allocate: BigInt!
+	deallocate: BigInt!
+	platformFeePaid: BigInt!
+	fundingPaid: BigInt!
+	fundingReceived: BigInt!
+	loss: BigInt!
+	profit: BigInt!
+	accountSource: Bytes
+	updateTimestamp: BigInt!
+	timestamp: BigInt!
 }
 
 type SymbolTradeHistory @entity {
-    id: ID!
-    symbolId: BigInt!
-    timestamp: BigInt!
-    updateTimestamp: BigInt!
-    volume: BigInt!
-    accountSource: Bytes
+	id: ID!
+	symbolId: BigInt!
+	timestamp: BigInt!
+	updateTimestamp: BigInt!
+	volume: BigInt!
+	accountSource: Bytes
 }
 
 type DailySymbolTradesHistory @entity {
-    id: ID! # account_source + account + symbolId
-    updateTimestamp: BigInt!
-    account: Bytes!
-    accountSource: Bytes
-    symbolId: BigInt!
-    totalTrades: BigInt!
-    fundingReceived: BigInt!
-    fundingPaid: BigInt!
-    platformFeePaid: BigInt!
+	id: ID! # account_source + account + symbolId
+	updateTimestamp: BigInt!
+	account: Bytes!
+	accountSource: Bytes
+	symbolId: BigInt!
+	totalTrades: BigInt!
+	fundingReceived: BigInt!
+	fundingPaid: BigInt!
+	platformFeePaid: BigInt!
 }
 
 type TotalSymbolTradesHistory @entity {
-    id: ID! # account_source + account + symbolId
-    updateTimestamp: BigInt!
-    account: Bytes!
-    accountSource: Bytes
-    symbolId: BigInt!
-    totalTrades: BigInt!
-    fundingReceived: BigInt!
-    fundingPaid: BigInt!
-    platformFeePaid: BigInt!
+	id: ID! # account_source + account + symbolId
+	updateTimestamp: BigInt!
+	account: Bytes!
+	accountSource: Bytes
+	symbolId: BigInt!
+	totalTrades: BigInt!
+	fundingReceived: BigInt!
+	fundingPaid: BigInt!
+	platformFeePaid: BigInt!
 }
 
 type OpenInterest @entity {
-    id: ID!
-    amount: BigInt!
-    weightedAmount: BigInt!
-    timestamp: BigInt!
+	id: ID!
+	amount: BigInt!
+	weightedAmount: BigInt!
+	timestamp: BigInt!
 }
 
-type Configuration @entity{
-    id: ID!
-    collateral: Bytes!
-    updateTimestamp: BigInt!
-    updateTransaction: Bytes!
+type Configuration @entity {
+	id: ID!
+	collateral: Bytes!
+	updateTimestamp: BigInt!
+	updateTransaction: Bytes!
 }
 
-type GrantedRole @entity{
-    id: ID!
-    role: String!
-    user: Bytes!
-    contract: Bytes
-    grantTransaction: Bytes
-    revokeTransaction: Bytes
-    updateTimestamp: BigInt!
+type GrantedRole @entity {
+	id: ID!
+	role: String!
+	user: Bytes!
+	contract: Bytes
+	grantTransaction: Bytes
+	revokeTransaction: Bytes
+	updateTimestamp: BigInt!
+}
+
+type OpenInterestSettleDay @entity {
+	id: ID!
+	dayNumber: BigInt!
+	timestamp: BigInt!
 }

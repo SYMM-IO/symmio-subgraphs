@@ -1,6 +1,7 @@
 import { DebugEntity, Quote } from "../../../generated/schema"
 import { BaseHandler, Version } from "../../BaseHandler"
 import { ethereum } from "@graphprotocol/graph-ts";
+import { getQuote as getQuote_0_8_4 } from "../../../common/contract_utils_0_8_4";
 import { getQuote as getQuote_0_8_3 } from "../../../common/contract_utils_0_8_3";
 import { getQuote as getQuote_0_8_2 } from "../../../common/contract_utils_0_8_2";
 import { getQuote as getQuote_0_8_0 } from "../../../common/contract_utils_0_8_0";
@@ -20,6 +21,19 @@ export class FillCloseRequestHandler<T> extends BaseHandler {
 		quote.globalCounter = super.handleGlobalCounter()
 
 		switch (version) {
+			case Version.v_0_8_4: {
+				let q = getQuote_0_8_4(event.address, event.params.quoteId)
+				if (!q) {
+					db.message = `quoteId: ${event.params.quoteId.toString()} getQuote_0_8_4 problem`
+					db.save()
+					return
+				}
+				quote.cva = q.lockedValues.cva
+				quote.partyAmm = q.lockedValues.partyAmm
+				quote.partyBmm = q.lockedValues.partyBmm
+				quote.lf = q.lockedValues.lf
+				break
+			}
 			case Version.v_0_8_3: {
 				let q = getQuote_0_8_3(event.address, event.params.quoteId)
 				if (!q) {

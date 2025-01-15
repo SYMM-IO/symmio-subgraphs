@@ -17,3 +17,4 @@ UniConfig.json
 subgraph.yaml
 /schema.graphql
 schema.graphql
+analytics/currentConfig.json

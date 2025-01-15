@@ -1,11 +1,12 @@
-import {WithdrawHandler as CommonWithdrawHandler} from "../../../common/handlers/symmio/WithdrawHandler"
-import {BalanceChange} from "../../../generated/schema"
-import {ethereum} from "@graphprotocol/graph-ts";
-import {Version} from "../../../common/BaseHandler";
-import {getConfiguration} from "../../utils/builders";
+import { WithdrawHandler as CommonWithdrawHandler } from "../../../common/handlers/symmio/WithdrawHandler"
+import { BalanceChange } from "../../../generated/schema"
+import { ethereum } from "@graphprotocol/graph-ts"
+import { Version } from "../../../common/BaseHandler"
+import { getConfiguration } from "../../utils/builders"
 
-import {updateActivityTimestamps, updateHistories, UpdateHistoriesParams} from "../../utils/helpers";
-import {AccountType, createNewAccountIfNotExists} from "../../../common/utils/builders";
+import { updateHistories, UpdateHistoriesParams } from "../../utils/historyHelpers"
+import { AccountType, createNewAccountIfNotExists } from "../../../common/utils/builders"
+import { updateActivityTimestamps } from "../../utils/activityHelpers"
 
 export class WithdrawHandler<T> extends CommonWithdrawHandler<T> {
 	handle(_event: ethereum.Event, version: Version): void {
@@ -22,9 +23,7 @@ export class WithdrawHandler<T> extends CommonWithdrawHandler<T> {
 		account.updateTimestamp = event.block.timestamp
 		account.save()
 		updateActivityTimestamps(account, event.block.timestamp)
-		let withdraw = new BalanceChange(
-			event.transaction.hash.toHex() + "-" + event.logIndex.toHexString(),
-		)
+		let withdraw = new BalanceChange(event.transaction.hash.toHex() + "-" + event.logIndex.toHexString())
 		withdraw.type = "WITHDRAW"
 		withdraw.timestamp = event.block.timestamp
 		withdraw.blockNumber = event.block.number
@@ -33,9 +32,6 @@ export class WithdrawHandler<T> extends CommonWithdrawHandler<T> {
 		withdraw.account = event.params.sender
 		withdraw.collateral = getConfiguration(event).collateral
 		withdraw.save()
-		updateHistories(
-			new UpdateHistoriesParams(version, account, null, event)
-				.withdraw(event.params.amount)
-		)
+		updateHistories(new UpdateHistoriesParams(version, account, null, event).withdraw(event.params.amount))
 	}
 }

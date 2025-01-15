@@ -1,24 +1,17 @@
-import {BaseHandler, Version} from "../../BaseHandler"
-import {BigInt, Bytes, ethereum,} from "@graphprotocol/graph-ts"
-import {Quote} from "../../../generated/schema"
-import {SendQuote as SendQuote_0_8_0} from "../../../generated/symmio_0_8_0/symmio_0_8_0";
-import {SendQuote as SendQuote_0_8_2} from "../../../generated/symmio_0_8_2/symmio_0_8_2";
-import {SendQuote as SendQuote_0_8_3} from "../../../generated/symmio_0_8_3/symmio_0_8_3";
+import { BigInt, Bytes, ethereum } from "@graphprotocol/graph-ts"
+import { Quote } from "../../../generated/schema"
+import { SendQuote as SendQuote_0_8_0 } from "../../../generated/symmio_0_8_0/symmio_0_8_0"
+import { SendQuote as SendQuote_0_8_2 } from "../../../generated/symmio_0_8_2/symmio_0_8_2"
+import { SendQuote as SendQuote_0_8_3 } from "../../../generated/symmio_0_8_3/symmio_0_8_3"
+import { SendQuote as SendQuote_0_8_4 } from "../../../generated/symmio_0_8_4/symmio_0_8_4"
+import { BaseHandler, Version } from "../../BaseHandler"
 
-import {
-	getQuote as getQuote_0_8_3,
-	symbolIdToSymbolName as symbolIdToSymbolName_0_8_3
-} from "../../../common/contract_utils_0_8_3";
-import {
-	getQuote as getQuote_0_8_2,
-	symbolIdToSymbolName as symbolIdToSymbolName_0_8_2
-} from "../../../common/contract_utils_0_8_2";
-import {
-	getQuote as getQuote_0_8_0,
-	symbolIdToSymbolName as symbolIdToSymbolName_0_8_0
-} from "../../../common/contract_utils_0_8_0";
+import { getQuote as getQuote_0_8_0, symbolIdToSymbolName as symbolIdToSymbolName_0_8_0 } from "../../../common/contract_utils_0_8_0"
+import { getQuote as getQuote_0_8_2, symbolIdToSymbolName as symbolIdToSymbolName_0_8_2 } from "../../../common/contract_utils_0_8_2"
+import { getQuote as getQuote_0_8_3, symbolIdToSymbolName as symbolIdToSymbolName_0_8_3 } from "../../../common/contract_utils_0_8_3"
+import { getQuote as getQuote_0_8_4, symbolIdToSymbolName as symbolIdToSymbolName_0_8_4 } from "../../../common/contract_utils_0_8_4"
 
-import {setEventTimestampAndTransactionHashAndAction} from "../../utils/quote";
+import { setEventTimestampAndTransactionHashAndAction } from "../../utils/quote"
 
 export class SendQuoteHandler<T> extends BaseHandler {
 	handleQuote(_event: ethereum.Event, version: Version): void {
@@ -49,6 +42,19 @@ export class SendQuoteHandler<T> extends BaseHandler {
 
 		let symbolName: string
 		switch (version) {
+			case Version.v_0_8_4: {
+				// @ts-ignore
+				const e = changetype<SendQuote_0_8_4>(_event)
+				quote.partyAmm = e.params.partyAmm
+				quote.partyBmm = e.params.partyBmm
+				quote.initialPartyAmm = e.params.partyAmm
+				quote.initialPartyBmm = e.params.partyBmm
+				quote.tradingFee = e.params.tradingFee
+				const q = getQuote_0_8_4(event.address, event.params.quoteId)!
+				quote.maxFundingRate = q.maxFundingRate
+				symbolName = symbolIdToSymbolName_0_8_4(event.params.symbolId, event.address)
+				break
+			}
 			case Version.v_0_8_3: {
 				// @ts-ignore
 				const e = changetype<SendQuote_0_8_3>(_event)
@@ -101,6 +107,6 @@ export class SendQuoteHandler<T> extends BaseHandler {
 		}
 		quote.timestamp = event.block.timestamp
 		quote.save()
-		setEventTimestampAndTransactionHashAndAction(quote, "SendQuote", event);
+		setEventTimestampAndTransactionHashAndAction(quote, "SendQuote", event)
 	}
 }

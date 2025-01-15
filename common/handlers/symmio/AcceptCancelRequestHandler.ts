@@ -6,6 +6,7 @@ import { BigInt, Bytes, ethereum } from "@graphprotocol/graph-ts"
 import { getQuote as getQuote_0_8_0, symbolIdToSymbolName as symbolIdToSymbolName_0_8_0 } from "../../../common/contract_utils_0_8_0"
 import { getQuote as getQuote_0_8_2, symbolIdToSymbolName as symbolIdToSymbolName_0_8_2 } from "../../../common/contract_utils_0_8_2"
 import { getQuote as getQuote_0_8_3, symbolIdToSymbolName as symbolIdToSymbolName_0_8_3 } from "../../../common/contract_utils_0_8_3"
+import { getQuote as getQuote_0_8_4, symbolIdToSymbolName as symbolIdToSymbolName_0_8_4 } from "../../../common/contract_utils_0_8_4"
 
 export class AcceptCancelRequestHandler<T> extends BaseHandler {
 	handleQuote(_event: ethereum.Event, version: Version): void {
@@ -20,6 +21,35 @@ export class AcceptCancelRequestHandler<T> extends BaseHandler {
 
 			let symbolName: string
 			switch (version) {
+				case Version.v_0_8_4: {
+					const q = getQuote_0_8_4(event.address, event.params.quoteId)!
+					quote.maxFundingRate = q.maxFundingRate
+					quote.orderTypeOpen = q.orderType
+					quote.partyA = q.partyA
+					quote.symbolId = q.symbolId
+					quote.tradingFee = q.tradingFee
+					quote.positionType = q.positionType
+					quote.requestedOpenPrice = q.marketPrice
+					quote.quantity = q.quantity
+					quote.cva = q.lockedValues.cva
+					quote.lf = q.lockedValues.lf
+					quote.initialCva = q.lockedValues.cva
+					quote.initialLf = q.lockedValues.lf
+					quote.initialPartyAmm = q.lockedValues.partyAmm
+					quote.initialPartyBmm = q.lockedValues.partyBmm
+					quote.openDeadline = q.deadline
+					quote.quoteStatus = q.quoteStatus
+					quote.marketPrice = q.marketPrice
+					if (q.partyBsWhiteList) {
+						let partyBsWhiteList: Bytes[] = []
+						for (let i = 0, len = q.partyBsWhiteList.length; i < len; i++) {
+							partyBsWhiteList.push(q.partyBsWhiteList[i])
+						}
+						quote.partyBsWhiteList = partyBsWhiteList
+					}
+					symbolName = symbolIdToSymbolName_0_8_4(q.symbolId, event.address)
+					break
+				}
 				case Version.v_0_8_3: {
 					const q = getQuote_0_8_3(event.address, event.params.quoteId)!
 					quote.maxFundingRate = q.maxFundingRate
