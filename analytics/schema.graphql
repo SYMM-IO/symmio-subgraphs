@@ -32,6 +32,7 @@ type TradeHistory @entity {
 
 type DailyHistory @entity {
 	id: ID!
+	day: BigInt!
 	quotesCount: BigInt!
 	tradeVolume: BigInt!
 	openTradeVolume: BigInt!
@@ -57,6 +58,7 @@ type DailyHistory @entity {
 
 type SolverDailyHistory @entity {
 	id: ID!
+	day: BigInt!
 	tradeVolume: BigInt!
 	openTradeVolume: BigInt!
 	closeTradeVolume: BigInt!
@@ -112,6 +114,7 @@ type TotalHistory @entity {
 
 type DailyUserHistory @entity {
 	id: ID!
+	day: BigInt!
 	account: Bytes!
 	quotesCount: BigInt!
 	openTradeVolume: BigInt!
@@ -165,6 +168,7 @@ type SymbolTradeHistory @entity {
 
 type DailySymbolTradesHistory @entity {
 	id: ID! # account_source + account + symbolId
+	day: BigInt!
 	updateTimestamp: BigInt!
 	account: Bytes!
 	accountSource: Bytes

@@ -16,8 +16,9 @@ import {
 	UserActivity,
 	WeeklyHistory,
 } from "../../generated/schema"
-import { startOfDay, startOfMonth, startOfWeek } from "./time"
+import { getDayNumber, startOfDay, startOfMonth, startOfWeek } from "./time"
 import { Version } from "../../common/BaseHandler"
+import { getCollateral as getCollateral_0_8_4 } from "../../common/contract_utils_0_8_4"
 import { getCollateral as getCollateral_0_8_3 } from "../../common/contract_utils_0_8_3"
 import { getCollateral as getCollateral_0_8_2 } from "../../common/contract_utils_0_8_2"
 import { getCollateral as getCollateral_0_8_0 } from "../../common/contract_utils_0_8_0"
@@ -31,6 +32,7 @@ export function getDailyHistoryForTimestamp(timestamp: BigInt, accountSource: By
 	let dh = DailyHistory.load(id)
 	if (dh == null) {
 		dh = new DailyHistory(id)
+		dh.day = getDayNumber(timestamp)
 		dh.updateTimestamp = timestamp
 		dh.timestamp = timestamp
 		dh.deposit = BigInt.zero()
@@ -63,6 +65,7 @@ export function getSolverDailyHistoryForTimestamp(timestamp: BigInt, solver: Byt
 	let sdh = SolverDailyHistory.load(id)
 	if (sdh == null) {
 		sdh = new SolverDailyHistory(id)
+		sdh.day = getDayNumber(timestamp)
 		sdh.updateTimestamp = timestamp
 		sdh.timestamp = timestamp
 		sdh.tradeVolume = BigInt.zero()
@@ -168,6 +171,7 @@ export function getDailySymbolTradesHistory(
 
 	if (history == null) {
 		history = new DailySymbolTradesHistory(id)
+		history.day = getDayNumber(timestamp)
 		history.updateTimestamp = timestamp
 		history.account = account
 		history.accountSource = accountSource === null ? ZERO_ADDRESS_BYTES : accountSource
@@ -215,6 +219,7 @@ export function getDailyUserHistoryForTimestamp(timestamp: BigInt, account: Acco
 		let th = getTotalUserHistory(timestamp, account)
 
 		dh = new DailyUserHistory(id)
+		dh.day = getDayNumber(timestamp)
 		dh.updateTimestamp = timestamp
 		dh.account = account.account
 		dh.timestamp = timestamp
@@ -321,6 +326,11 @@ export function getAlreadyCreatedConfiguration(event: ethereum.Event, version: V
 	let conf = Configuration.load("0")!
 	if (conf.collateral == event.address) {
 		switch (version) {
+			case Version.v_0_8_4: {
+				conf.collateral = getCollateral_0_8_4(event.address)!
+				conf.save()
+				break
+			}
 			case Version.v_0_8_3: {
 				conf.collateral = getCollateral_0_8_3(event.address)!
 				conf.save()
