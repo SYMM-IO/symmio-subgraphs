@@ -171,7 +171,7 @@ export function catchUpHistories(blockTimestamp: BigInt): void {
 	let lenAffiliates = players.affiliates.length
 	let lenSolvers = players.solvers.length
 
-	let timestamp = yesterday.times(SECONDS_IN_DAY).minus(BigInt.fromI32(1))
+	let timestamp = yesterday.plus(BigInt.fromI32(1)).times(SECONDS_IN_DAY).minus(BigInt.fromI32(1))
 
 	for (let i = 0; i < lenAffiliates; i++) {
 		let affiliate = players.affiliates[i]
