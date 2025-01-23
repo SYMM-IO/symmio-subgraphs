@@ -26,7 +26,7 @@
 			"abi": "symmioMultiAccount",
 			"version": "1",
 			"startBlock": "16673330",
-			"name": "horizon_multi_account"
+			"name": "xpanse_multi_account"
 		}
 	],
 	"deploy_urls": {

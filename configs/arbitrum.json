@@ -41,6 +41,13 @@
       "version": "1",
       "startBlock": "277773113",
       "name": "multi_account_vibe"
+    },
+    {
+      "address": "0x263A8220e9351c5d0cC13567Db4d7BF58e7470c6",
+      "abi": "symmioMultiAccount",
+      "version": "1",
+      "startBlock": "293024249",
+      "name": "multi_account_xpanse"
     }
   ],
   "deploy_urls": {

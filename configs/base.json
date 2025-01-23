@@ -76,6 +76,13 @@
 			"version": "1",
 			"startBlock": "22086878",
 			"name": "multi_account_zklink"
+		},
+		{
+			"address": "0xDE6446197Cd1AE02E1C5B7191a626Fb0c1757377",
+			"abi": "symmioMultiAccount",
+			"version": "1",
+			"startBlock": "24743092",
+			"name": "multi_account_xpanse"
 		}
 	],
 	"deploy_urls": {
