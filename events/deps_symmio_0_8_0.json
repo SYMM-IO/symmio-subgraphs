@@ -1,0 +1,206 @@
+{
+  "AcceptCancelCloseRequest": [
+    "AcceptCancelCloseRequest"
+  ],
+  "AcceptCancelRequest": [
+    "AcceptCancelRequest"
+  ],
+  "ActiveEmergencyMode": [
+    "ActiveEmergencyMode"
+  ],
+  "AddSymbol": [
+    "AddSymbol"
+  ],
+  "AllocateForPartyB": [
+    "AllocateForPartyB"
+  ],
+  "AllocatePartyA": [
+    "AllocatePartyA"
+  ],
+  "AllocatePartyB": [
+    "AllocatePartyB"
+  ],
+  "DeactiveEmergencyMode": [
+    "DeactiveEmergencyMode"
+  ],
+  "DeallocateForPartyB": [
+    "DeallocateForPartyB"
+  ],
+  "DeallocatePartyA": [
+    "DeallocatePartyA"
+  ],
+  "Deposit": [
+    "Deposit"
+  ],
+  "EmergencyClosePosition": [
+    "EmergencyClosePosition"
+  ],
+  "ExpireQuote": [
+    "ExpireQuote"
+  ],
+  "FillCloseRequest": [
+    "FillCloseRequest"
+  ],
+  "ForceCancelCloseRequest": [
+    "ForceCancelCloseRequest"
+  ],
+  "ForceCancelQuote": [
+    "ForceCancelQuote"
+  ],
+  "ForceClosePosition": [
+    "ForceClosePosition"
+  ],
+  "LiquidatePartyA": [
+    "LiquidatePartyA"
+  ],
+  "LiquidatePartyB": [
+    "LiquidatePartyB"
+  ],
+  "LiquidatePositionsPartyA": [
+    "LiquidatePositionsPartyA"
+  ],
+  "LiquidatePositionsPartyB": [
+    "LiquidatePositionsPartyB"
+  ],
+  "LockQuote": [
+    "LockQuote"
+  ],
+  "OpenPosition": [
+    "OpenPosition"
+  ],
+  "PauseAccounting": [
+    "PauseAccounting"
+  ],
+  "PauseGlobal": [
+    "PauseGlobal"
+  ],
+  "PauseLiquidation": [
+    "PauseLiquidation"
+  ],
+  "PausePartyAActions": [
+    "PausePartyAActions"
+  ],
+  "PausePartyBActions": [
+    "PausePartyBActions"
+  ],
+  "RegisterPartyB": [
+    "RegisterPartyB"
+  ],
+  "RemoveBridge": [
+    "RemoveBridge"
+  ],
+  "RequestToCancelCloseRequest": [
+    "RequestToCancelCloseRequest"
+  ],
+  "RequestToCancelQuote": [
+    "RequestToCancelQuote"
+  ],
+  "RequestToClosePosition": [
+    "RequestToClosePosition"
+  ],
+  "ResolveLiquidationDispute": [
+    "ResolveLiquidationDispute"
+  ],
+  "RoleGranted": [
+    "RoleGranted"
+  ],
+  "RoleRevoked": [
+    "RoleRevoked"
+  ],
+  "SendQuote": [
+    "SendQuote"
+  ],
+  "SetBalanceLimitPerUser": [
+    "SetBalanceLimitPerUser"
+  ],
+  "SetCollateral": [
+    "SetCollateral"
+  ],
+  "SetDeallocateCooldown": [
+    "SetDeallocateCooldown"
+  ],
+  "SetDeallocateDebounceTime": [
+    "SetDeallocateDebounceTime"
+  ],
+  "SetFeeCollector": [
+    "SetFeeCollector"
+  ],
+  "SetForceCancelCloseCooldown": [
+    "SetForceCancelCloseCooldown"
+  ],
+  "SetForceCancelCooldown": [
+    "SetForceCancelCooldown"
+  ],
+  "SetForceCloseCooldown": [
+    "SetForceCloseCooldown"
+  ],
+  "SetForceCloseGapRatio": [
+    "SetForceCloseGapRatio"
+  ],
+  "SetForceCloseMinSigPeriod": [
+    "SetForceCloseMinSigPeriod"
+  ],
+  "SetForceClosePricePenalty": [
+    "SetForceClosePricePenalty"
+  ],
+  "SetLiquidationTimeout": [
+    "SetLiquidationTimeout"
+  ],
+  "SetLiquidatorShare": [
+    "SetLiquidatorShare"
+  ],
+  "SetMuonConfig": [
+    "SetMuonConfig"
+  ],
+  "SetMuonIds": [
+    "SetMuonIds"
+  ],
+  "SetPartyBEmergencyStatus": [
+    "SetPartyBEmergencyStatus"
+  ],
+  "SetPendingQuotesValidLength": [
+    "SetPendingQuotesValidLength"
+  ],
+  "SetSuspendedAddress": [
+    "SetSuspendedAddress"
+  ],
+  "SetSymbolAcceptableValues": [
+    "SetSymbolAcceptableValues"
+  ],
+  "SetSymbolMaxSlippage": [
+    "SetSymbolMaxSlippage"
+  ],
+  "SetSymbolTradingFee": [
+    "SetSymbolTradingFee"
+  ],
+  "SetSymbolValidationState": [
+    "SetSymbolValidationState"
+  ],
+  "TransferAllocation": [
+    "TransferAllocation"
+  ],
+  "UnlockQuote": [
+    "UnlockQuote"
+  ],
+  "UnpauseAccounting": [
+    "UnpauseAccounting"
+  ],
+  "UnpauseGlobal": [
+    "UnpauseGlobal"
+  ],
+  "UnpauseInternalTransfer": [
+    "UnpauseInternalTransfer"
+  ],
+  "UnpauseLiquidation": [
+    "UnpauseLiquidation"
+  ],
+  "UnpausePartyAActions": [
+    "UnpausePartyAActions"
+  ],
+  "UnpausePartyBActions": [
+    "UnpausePartyBActions"
+  ],
+  "Withdraw": [
+    "Withdraw"
+  ]
+}
